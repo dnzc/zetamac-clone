@@ -137,10 +137,10 @@ function init(options) {
 
             // copybutton functionality
             banner.find('.copy-btn').on('click', function() {
-                const csvRows = sortedProblems.slice(2).map(p => { // only pick worst two qns
+                const csvRows = sortedProblems.map(p => {
                     const timeInSeconds = (p.timeMs / 1000).toFixed(3);
                     return `"${p.problem}","${p.answer}","${timeInSeconds}"`;
-                }).join('\n');
+                }).slice(0,2).join('\n'); // only worst 2
                 navigator.clipboard.writeText(csvRows);
             });
 
