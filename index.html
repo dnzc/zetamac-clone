@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Arithmetic Game – Online Speed Drill</title>
+    <link rel="icon" href="data:image/x-icon;base64,">
+    <link href="app.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div id="game">
+      <span class="left">Seconds left:</span>
+      <span class="correct">Score: 0</span>
+      <div class="banner">
+        <div class="start">
+          <span class="problem"></span>
+          =
+          <input class="answer" />
+        </div>
+        <div class="end">
+            <div class="score">
+              <p class="correct">Score: 0</p>
+            </div>
+          <div class="question-log">
+            <h3>Questions Answered (sorted by time)</h3>
+            <button class="copy-btn">Copy JSON</button>
+            <ol class="question-list"></ol>
+          </div>
+          <p>
+            <a href="">Try again</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      init({
+          "add":true,
+          "sub":true,
+          "mul":true,
+          "div":true,
+          "add_left_min":2,
+          "add_left_max":100,
+          "add_right_min":2,
+          "add_right_max":100,
+          "mul_left_min":2,
+          "mul_left_max":12,
+          "mul_right_min":2,
+          "mul_right_max":100,
+          "duration":5,
+      });
+    </script>
+  </body>
+</html>
