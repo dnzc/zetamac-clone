@@ -119,7 +119,6 @@ function init(options) {
         if (d <= 0) {
             problemLog.push(thisProblemLog);
             answer.prop('disabled', true);
-            console.log(problemLog);
             clearInterval(timer);
 
             // Sort questions by time and display them
@@ -138,8 +137,11 @@ function init(options) {
 
             // copybutton functionality
             banner.find('.copy-btn').on('click', function() {
-                const jsonString = JSON.stringify(sortedProblems);
-                navigator.clipboard.writeText(jsonString);
+                const csvRows = sortedProblems.slice(2).map(p => { // only pick worst two qns
+                    const timeInSeconds = (p.timeMs / 1000).toFixed(3);
+                    return `"${p.problem}","${p.answer}","${timeInSeconds}"`;
+                }).join('\n');
+                navigator.clipboard.writeText(csvRows);
             });
 
             banner.find('.start').hide();
